@@ -86,13 +86,13 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-24 pt-40">
           <p className="mb-6 text-xs font-semibold uppercase tracking-[0.4em] text-gold">Portfolio professionnel · Conakry, Guinée</p>
-          <h1 className="font-display text-6xl font-semibold leading-none text-pure md:text-8xl">
+          <h1 className="font-display text-5xl font-bold leading-tight tracking-tight text-pure md:text-7xl">
             SIDDY <span className="text-gold">|</span><br />Mindset & Leadership
           </h1>
           <div className="my-8 h-px w-32 bg-gold" />
-          <p className="font-display text-3xl italic text-gold">Du potentiel à l’impact.</p>
+          <p className="font-display text-2xl italic text-gold">Du potentiel à l’impact.</p>
           <p className="mt-6 max-w-xl text-pure/80">Amadou Siddy Diallo — Monteur vidéo professionnel · Créateur de contenu · Coach Mindset & Leadership · Formateur</p>
-          <a href="#contact" className="mt-10 inline-block border border-gold bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-ink transition-colors hover:bg-transparent hover:text-gold">Collaborer</a>
+          <a href="#contact" className="mt-10 inline-block border border-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-ink">Collaborer</a>
         </div>
       </section>
 
@@ -101,7 +101,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-16 px-6 md:grid-cols-[1fr_1.4fr]">
           <div>
             <Label n="01" t="À propos" />
-            <h2 className="font-display text-5xl font-semibold leading-tight">Créer, transmettre, accompagner.</h2>
+            <h2 className="font-display text-4xl font-semibold tracking-tight leading-tight">Créer, transmettre, accompagner.</h2>
           </div>
           <div className="space-y-5 text-lg leading-relaxed text-ink/80">
             <p>Je suis Amadou Siddy Diallo, connu sous le nom de Siddy. Monteur vidéo professionnel, créateur de contenu et coach en Mindset & Leadership.</p>
@@ -119,7 +119,7 @@ function Index() {
           <div className="grid gap-px bg-gold/25 md:grid-cols-2 lg:grid-cols-3">
             {services.map(([t, d], i) => (
               <div key={t} className="group bg-ink p-10 transition-colors hover:bg-pure/5">
-                <span className="font-display text-4xl text-gold">0{i + 1}</span>
+                <span className="font-display text-3xl font-semibold text-gold">0{i + 1}</span>
                 <h3 className="mt-6 text-xl font-semibold text-pure">{t}</h3>
                 <p className="mt-3 leading-relaxed text-pure/70">{d}</p>
               </div>
@@ -132,7 +132,7 @@ function Index() {
       <section id="createur360" className="bg-cream py-28 text-ink">
         <div className="mx-auto max-w-6xl px-6">
           <Label n="03" t="Programme de formation" />
-          <h2 className="font-display text-6xl font-semibold">CRÉATEUR <span className="text-gold">360</span></h2>
+          <h2 className="font-display text-5xl font-bold tracking-tight">CRÉATEUR <span className="text-gold">360</span></h2>
           <p className="mt-4 font-display text-2xl italic text-ink/70">« De l’idée à la création. De la création à l’impact. »</p>
           <div className="mt-14 grid gap-8 md:grid-cols-2">
             {[["Formule 1", "Conseil & orientation", "Structurer votre projet et définir votre stratégie.", f1], ["Formule 2", "Initiation pratique", "Concevoir, réaliser et publier vos propres contenus.", f2]].map(([k, t, d, items]) => (
@@ -162,7 +162,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-16 px-6 md:grid-cols-2">
           <div>
             <Label n="04" t="Formation montage" />
-            <h2 className="font-display text-5xl font-semibold leading-tight text-pure">De zéro à <span className="text-gold">premier client.</span></h2>
+            <h2 className="font-display text-4xl font-semibold tracking-tight leading-tight text-pure">De zéro à <span className="text-gold">premier client.</span></h2>
             <p className="mt-6 text-pure/70">Acquérir une compétence professionnelle en montage vidéo et en faire une source de revenus — des premiers montages jusqu’à la recherche du premier client.</p>
           </div>
           <div className="text-pure/85"><List items={formation} /></div>
@@ -170,21 +170,21 @@ function Index() {
       </section>
 
       {/* Compétences + Réalisations */}
-      <section className="bg-cream py-28 text-ink">
+      <section className="bg-ink py-28 text-pure">
         <div className="mx-auto max-w-6xl px-6">
           <Label n="05" t="Compétences" />
           <div className="flex flex-wrap gap-3">
             {skills.map((s) => (
-              <span key={s} className="border border-ink/20 px-5 py-2 text-sm">{s}</span>
+              <span key={s} className="border border-pure/20 px-5 py-2 text-sm text-pure/85">{s}</span>
             ))}
           </div>
           <div className="mt-24"><Label n="06" t="Réalisations & projets" /></div>
-          <div className="divide-y divide-ink/15 border-y border-ink/15">
+          <div className="divide-y divide-pure/15 border-y border-pure/15">
             {projects.map(([t, d], i) => (
               <div key={t} className="grid gap-4 py-8 md:grid-cols-[80px_1fr_1.5fr]">
                 <span className="font-display text-3xl text-gold">0{i + 1}</span>
                 <h3 className="text-xl font-semibold">{t}</h3>
-                <p className="text-ink/70">{d}</p>
+                <p className="text-pure/70">{d}</p>
               </div>
             ))}
           </div>
@@ -195,9 +195,9 @@ function Index() {
       <section id="vision" className="bg-ink py-32 text-center">
         <div className="mx-auto max-w-3xl px-6">
           <div className="flex justify-center"><Label n="07" t="Ma vision" /></div>
-          <p className="font-display text-3xl leading-snug text-pure md:text-4xl">Chaque personne possède un potentiel qui ne demande qu’à être développé. Mais il faut une vision, des compétences, de la discipline — et le courage de passer à l’action.</p>
+          <p className="font-display text-2xl font-medium leading-snug text-pure md:text-3xl">Chaque personne possède un potentiel qui ne demande qu’à être développé. Mais il faut une vision, des compétences, de la discipline — et le courage de passer à l’action.</p>
           <div className="mx-auto my-10 h-px w-24 bg-gold" />
-          <p className="font-display text-4xl italic text-gold">Du potentiel à l’impact.</p>
+          <p className="font-display text-3xl italic text-gold">Du potentiel à l’impact.</p>
         </div>
       </section>
 
@@ -206,7 +206,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-16 px-6 md:grid-cols-2">
           <div>
             <Label n="08" t="Contact" />
-            <h2 className="font-display text-5xl font-semibold text-pure">Parlons de votre projet.</h2>
+            <h2 className="font-display text-4xl font-semibold tracking-tight text-pure">Parlons de votre projet.</h2>
             <p className="mt-6 text-pure/70">Tarifs, formules et modalités : chaque proposition est étudiée selon vos besoins, vos objectifs et la nature du projet.</p>
           </div>
           <div className="divide-y divide-gold/20">

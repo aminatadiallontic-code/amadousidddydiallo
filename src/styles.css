@@ -63,8 +63,8 @@
   --color-gold: var(--gold);
   --color-pure: var(--pure);
   --color-cream: var(--cream);
-  --font-display: "Cormorant Garamond", serif;
-  --font-sans: "Manrope", sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-sans: "Poppins", sans-serif;
 }
 
 :root {
@@ -72,8 +72,8 @@
   --gold: oklch(0.769 0.13 87.5);
   --pure: oklch(1 0 0);
   --cream: oklch(0.954 0.012 88);
-  --font-display: "Cormorant Garamond", serif;
-  --font-body: "Manrope", sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-body: "Poppins", sans-serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
