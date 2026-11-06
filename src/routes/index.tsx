@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import hero from "@/assets/hero-studio.jpg";
+import portrait from "@/assets/siddy-portrait.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -81,18 +81,21 @@ function Index() {
       </nav>
 
       {/* Couverture */}
-      <section id="top" className="relative flex min-h-screen items-end overflow-hidden bg-ink">
-        <img src={hero} alt="Studio de montage vidéo de Siddy" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover opacity-60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 pb-24 pt-40">
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.4em] text-gold">Portfolio professionnel · Conakry, Guinée</p>
-          <h1 className="font-display text-5xl font-bold leading-tight tracking-tight text-pure md:text-7xl">
-            SIDDY <span className="text-gold">|</span><br />Mindset & Leadership
-          </h1>
-          <div className="my-8 h-px w-32 bg-gold" />
-          <p className="font-display text-2xl italic text-gold">Du potentiel à l’impact.</p>
-          <p className="mt-6 max-w-xl text-pure/80">Amadou Siddy Diallo — Monteur vidéo professionnel · Créateur de contenu · Coach Mindset & Leadership · Formateur</p>
-          <a href="#contact" className="mt-10 inline-block border border-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-ink">Collaborer</a>
+      <section id="top" className="relative flex min-h-screen items-center overflow-hidden bg-ink">
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-2">
+          <div>
+            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.4em] text-gold">Portfolio professionnel · Conakry, Guinée</p>
+            <h1 className="font-display text-5xl font-bold leading-tight tracking-tight text-pure md:text-6xl">
+              SIDDY <span className="text-gold">|</span><br />Mindset & Leadership
+            </h1>
+            <div className="my-8 h-px w-32 bg-gold" />
+            <p className="font-display text-2xl italic text-gold">Du potentiel à l’impact.</p>
+            <p className="mt-6 max-w-xl text-pure/80">Amadou Siddy Diallo — Monteur vidéo professionnel · Créateur de contenu · Coach Mindset & Leadership · Formateur</p>
+            <a href="#contact" className="mt-10 inline-block border border-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-ink">Collaborer</a>
+          </div>
+          <div className="border border-gold/30 p-2">
+            <img src={portrait.url} alt="Amadou Siddy Diallo — Siddy Mindset & Leadership" width={1254} height={1254} className="h-auto w-full" />
+          </div>
         </div>
       </section>
 
