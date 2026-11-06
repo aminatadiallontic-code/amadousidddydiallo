@@ -59,9 +59,21 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-pure: var(--pure);
+  --color-cream: var(--cream);
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans: "Manrope", sans-serif;
 }
 
 :root {
+  --ink: oklch(0.178 0 0);
+  --gold: oklch(0.769 0.13 87.5);
+  --pure: oklch(1 0 0);
+  --cream: oklch(0.954 0.012 88);
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Manrope", sans-serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -138,7 +150,8 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--color-ink);
+    color: var(--color-pure);
+    font-family: var(--font-body);
   }
 }
