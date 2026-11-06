@@ -35,7 +35,7 @@ export function ContactForm() {
       message: fd.get("message"),
     });
     if (!parsed.success) {
-      setError(parsed.error.issues[0].message);
+      setError(parsed.error.issues[0]?.message ?? "Formulaire invalide");
       return;
     }
     setError("");
