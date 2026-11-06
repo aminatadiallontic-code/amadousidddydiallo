@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ContactForm } from "@/components/ContactForm";
 import portrait from "@/assets/siddy-portrait.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -220,6 +221,10 @@ function Index() {
               </a>
             ))}
           </div>
+        </div>
+        <div className="mx-auto mt-20 max-w-3xl px-6">
+          <h3 className="mb-8 font-display text-2xl font-semibold text-pure">Demander une prestation, un accompagnement ou une formation</h3>
+          <ContactForm />
         </div>
         <footer className="mx-auto mt-24 max-w-6xl px-6 text-center text-sm text-pure/50">
           SIDDY | MINDSET & LEADERSHIP — De zéro à une source de revenus grâce au montage vidéo.
