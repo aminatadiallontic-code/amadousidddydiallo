@@ -86,12 +86,9 @@ function Index() {
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-2">
           <div>
             <p className="mb-6 text-xs font-semibold uppercase tracking-[0.4em] text-gold">Portfolio professionnel · Conakry, Guinée</p>
-            <h1 className="font-display text-5xl font-bold leading-tight tracking-tight text-pure md:text-6xl">
-              SIDDY <span className="text-gold">|</span><br />Mindset & Leadership
-            </h1>
+            <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-pure md:text-5xl">Amadou Siddy Diallo</h1>
             <div className="my-8 h-px w-32 bg-gold" />
-            <p className="font-display text-2xl italic text-gold">Du potentiel à l’impact.</p>
-            <p className="mt-6 max-w-xl text-pure/80">Amadou Siddy Diallo — Monteur vidéo professionnel · Créateur de contenu · Coach Mindset & Leadership · Formateur</p>
+            <p className="max-w-xl text-lg text-pure/80">Monteur vidéo professionnel · Créateur de contenu · Coach Mindset & Leadership · Formateur</p>
             <a href="#contact" className="mt-10 inline-block border border-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-ink">Collaborer</a>
           </div>
           <div className="border border-gold/30 p-2">
@@ -190,6 +187,51 @@ function Index() {
                 <h3 className="text-xl font-semibold">{t}</h3>
                 <p className="text-pure/70">{d}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Preuves de montage */}
+      <section id="realisations" className="bg-cream py-28 text-ink">
+        <div className="mx-auto max-w-6xl px-6">
+          <Label n="07" t="Preuves de montage" />
+          <h2 className="font-display text-4xl font-semibold tracking-tight">Mes montages en images.</h2>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {["Spot publicitaire", "Interview / prise de parole", "Contenu TikTok / Reels", "Vidéo YouTube", "Avant / après montage", "Projet client"].map((t, i) => (
+              <div key={t} className="group">
+                <div className="flex aspect-[9/12] items-center justify-center border border-dashed border-ink/25 bg-pure">
+                  <div className="text-center">
+                    <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-gold text-gold">▶</span>
+                    <p className="mt-4 text-sm text-ink/50">Vidéo à ajouter</p>
+                  </div>
+                </div>
+                <p className="mt-3 text-sm font-semibold"><span className="text-gold">0{i + 1}</span> · {t}</p>
+              </div>
+            ))}
+          </div>
+          <a href="https://www.tiktok.com/@siddy.mindset" target="_blank" rel="noreferrer" className="mt-10 inline-block border-b border-gold pb-1 text-sm font-semibold uppercase tracking-widest">Voir plus sur TikTok →</a>
+        </div>
+      </section>
+
+      {/* Témoignages */}
+      <section id="temoignages" className="bg-ink py-28 text-pure">
+        <div className="mx-auto max-w-6xl px-6">
+          <Label n="08" t="Témoignages clients" />
+          <div className="grid gap-px bg-gold/25 md:grid-cols-3">
+            {[
+              ["Nom du client", "Entrepreneur", 5, "Votre témoignage client ici : ce que Siddy a apporté à son image et à ses contenus."],
+              ["Nom du client", "Créatrice de contenu", 5, "Votre témoignage client ici : la qualité du montage, la réactivité, les résultats."],
+              ["Nom de l’élève", "Formation montage", 5, "Votre témoignage d’élève ici : de zéro au premier client grâce à la formation."],
+            ].map(([n, r, s, q], i) => (
+              <figure key={i} className="bg-ink p-10">
+                <div className="text-lg tracking-widest text-gold" aria-label={`${s} étoiles sur 5`}>{"★".repeat(s as number)}{"☆".repeat(5 - (s as number))}</div>
+                <blockquote className="mt-6 leading-relaxed text-pure/80">« {q as string} »</blockquote>
+                <figcaption className="mt-8 border-t border-pure/15 pt-5">
+                  <p className="font-semibold">{n as string}</p>
+                  <p className="text-sm text-pure/50">{r as string}</p>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
