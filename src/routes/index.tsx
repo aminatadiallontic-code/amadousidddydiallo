@@ -72,7 +72,7 @@ function Index() {
     <main className="font-sans">
       <nav className="fixed inset-x-0 top-0 z-20 border-b border-gold/20 bg-ink/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#top" className="font-display text-2xl font-semibold text-gold">SIDDY</a>
+          <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-gold">Mindset &amp; Leadership</a>
           <div className="hidden gap-8 text-sm text-pure/80 md:flex">
             {[["#apropos", "À propos"], ["#services", "Services"], ["#createur360", "Créateur 360"], ["#vision", "Vision"], ["#contact", "Contact"]].map(([h, l]) => (
               <a key={h} href={h} className="transition-colors hover:text-gold">{l}</a>
@@ -85,7 +85,6 @@ function Index() {
       <section id="top" className="relative flex min-h-screen items-center overflow-hidden bg-ink">
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-2">
           <div>
-            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.4em] text-gold">Portfolio professionnel · Conakry, Guinée</p>
             <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-pure md:text-5xl">Amadou Siddy Diallo</h1>
             <div className="my-8 h-px w-32 bg-gold" />
             <p className="max-w-xl text-lg text-pure/80">Monteur vidéo professionnel · Créateur de contenu · Coach Mindset & Leadership · Formateur</p>
