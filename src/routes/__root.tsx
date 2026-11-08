@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Siddy | Mindset & Leadership" },
+      { title: "Mindset & Leadership | Amadou Siddy Diallo" },
       { name: "author", content: "Amadou Siddy Diallo" },
     ],
     links: [
