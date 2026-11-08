@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ContactForm } from "@/components/ContactForm";
+import { AiAdvisor } from "@/components/AiAdvisor";
 import portrait from "@/assets/siddy-portrait.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -262,6 +263,9 @@ function Index() {
               </a>
             ))}
           </div>
+        </div>
+        <div className="mx-auto mt-20 max-w-3xl px-6">
+          <AiAdvisor />
         </div>
         <div className="mx-auto mt-20 max-w-3xl px-6">
           <h3 className="mb-8 font-display text-2xl font-semibold text-pure">Demander une prestation, un accompagnement ou une formation</h3>
