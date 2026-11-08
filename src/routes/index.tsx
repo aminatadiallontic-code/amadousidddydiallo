@@ -268,7 +268,7 @@ function Index() {
           <ContactForm />
         </div>
         <footer className="mx-auto mt-24 max-w-6xl px-6 text-center text-sm text-pure/50">
-          SIDDY | MINDSET & LEADERSHIP — De zéro à une source de revenus grâce au montage vidéo.
+          MINDSET & LEADERSHIP — De zéro à une source de revenus grâce au montage vidéo.
         </footer>
       </section>
     </main>
