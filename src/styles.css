@@ -155,3 +155,45 @@
     font-family: var(--font-body);
   }
 }
+
+.portfolio {
+  overflow-wrap: anywhere;
+  letter-spacing: 0;
+}
+
+.portfolio section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.portfolio :is(h1, h2, h3, h4) {
+  letter-spacing: 0;
+}
+
+@media (max-width: 767px) {
+  .portfolio section:not(#top) {
+    padding-block: 3.5rem;
+  }
+
+  .portfolio .gap-16 {
+    gap: 2rem;
+  }
+
+  .portfolio .p-10 {
+    padding: 1.5rem;
+  }
+
+  .portfolio h2.text-4xl,
+  .portfolio h2.text-5xl {
+    font-size: 1.875rem;
+    line-height: 1.25;
+  }
+
+  .portfolio h3.text-3xl {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .portfolio .text-lg {
+    font-size: 1rem;
+  }
+}

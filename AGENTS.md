@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep portfolio mobile layout scoped under `.portfolio`, with a collapsible header menu below the desktop breakpoint, so small-screen adjustments do not affect other app views.

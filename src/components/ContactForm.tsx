@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Indiquez votre nom").max(100),
@@ -62,14 +63,14 @@ export function ContactForm() {
     <form onSubmit={onSubmit} className="space-y-6" noValidate>
       <div className="flex flex-wrap gap-2">
         {types.map(([v, l]) => (
-          <button
+          <Button variant="ghost" aria-pressed={type === v}
             key={v}
             type="button"
             onClick={() => setType(v)}
-            className={`border px-5 py-2 text-sm transition-colors ${type === v ? "border-gold text-gold" : "border-pure/20 text-pure/70 hover:border-pure/50"}`}
+            className={`h-auto min-h-11 max-w-full rounded-none border px-4 py-2 text-base hover:bg-pure/5 hover:text-gold ${type === v ? "border-gold text-gold" : "border-pure/20 text-pure/70 hover:border-pure/50"}`}
           >
             {l}
-          </button>
+          </Button>
         ))}
       </div>
       <div className="grid gap-6 sm:grid-cols-2">
@@ -79,13 +80,13 @@ export function ContactForm() {
       <input name="phone" placeholder="Téléphone / WhatsApp (facultatif)" maxLength={30} className={field} />
       <textarea name="message" rows={4} placeholder="Décrivez votre projet ou votre besoin" maxLength={2000} className={`${field} resize-none`} />
       {error && <p className="text-sm text-destructive">{error}</p>}
-      <button
+      <Button variant="ghost"
         type="submit"
         disabled={status === "sending"}
-        className="border border-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-ink disabled:opacity-50"
+        className="h-auto min-h-12 w-full whitespace-normal rounded-none border border-gold px-6 py-4 text-sm font-semibold uppercase text-gold hover:bg-gold hover:text-ink disabled:opacity-50 sm:w-auto"
       >
         {status === "sending" ? "Envoi…" : "Envoyer la demande"}
-      </button>
+      </Button>
     </form>
   );
 }
