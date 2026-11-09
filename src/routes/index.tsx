@@ -1,4 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
 import { AiAdvisor } from "@/components/AiAdvisor";
 import portrait from "@/assets/siddy-portrait.jpeg.asset.json";
@@ -11,6 +14,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Siddy | Mindset & Leadership" },
       { property: "og:description", content: "Du potentiel à l’impact. Montage vidéo, Créateur 360 et coaching à Conakry." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: portrait.url },
+      { name: "twitter:image", content: portrait.url },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
@@ -47,10 +52,10 @@ const contacts = [
 
 function Label({ n, t }: { n: string; t: string }) {
   return (
-    <div className="mb-10 flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.35em] text-gold">
+    <div className="mb-8 grid grid-cols-[auto_auto_minmax(0,1fr)] items-center gap-3 text-sm font-semibold uppercase text-gold md:mb-10">
       <span>{n}</span>
-      <span className="h-px w-16 bg-gold" />
-      <span>{t}</span>
+      <span className="h-px w-8 bg-gold md:w-16" />
+      <span className="min-w-0">{t}</span>
     </div>
   );
 }
@@ -69,29 +74,37 @@ function List({ items }: { items: string[] }) {
 }
 
 function Index() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const links = [["#apropos", "À propos"], ["#services", "Services"], ["#createur360", "Créateur 360"], ["#realisations", "Montages"], ["#temoignages", "Avis"], ["#vision", "Vision"], ["#contact", "Contact"]];
   return (
-    <main className="font-sans">
+    <main className="portfolio font-sans">
       <nav className="fixed inset-x-0 top-0 z-20 border-b border-gold/20 bg-ink/85 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#top" className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-gold">Mindset &amp; Leadership</a>
-          <div className="hidden gap-8 text-sm text-pure/80 md:flex">
-            {[["#apropos", "À propos"], ["#services", "Services"], ["#createur360", "Créateur 360"], ["#vision", "Vision"], ["#contact", "Contact"]].map(([h, l]) => (
-              <a key={h} href={h} className="transition-colors hover:text-gold">{l}</a>
+        <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-6 py-3 lg:flex lg:justify-between lg:py-4">
+          <a href="#top" onClick={() => setMenuOpen(false)} className="min-w-0 font-display text-sm font-semibold uppercase leading-snug text-gold">Mindset &amp; Leadership</a>
+          <Button variant="ghost" size="icon" className="h-11 w-11 shrink-0 rounded-none text-gold hover:bg-pure/5 hover:text-gold lg:hidden" aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X /> : <Menu />}
+          </Button>
+          <div className="hidden gap-5 text-sm text-pure/80 lg:flex">
+            {links.map(([h, l]) => (
+              <a key={h} href={h} className="py-2 transition-colors hover:text-gold">{l}</a>
             ))}
           </div>
         </div>
+        {menuOpen && <div id="mobile-menu" className="max-h-[calc(100dvh-68px)] overflow-y-auto border-t border-gold/20 bg-ink px-6 pb-4 lg:hidden">
+          {links.map(([h, l]) => <a key={h} href={h} onClick={() => setMenuOpen(false)} className="block border-b border-pure/10 py-3 text-base text-pure hover:text-gold">{l}</a>)}
+        </div>}
       </nav>
 
       {/* Couverture */}
-      <section id="top" className="relative flex min-h-screen items-center overflow-hidden bg-ink">
-        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-2">
-          <div>
-            <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-pure md:text-5xl">Amadou Siddy Diallo</h1>
-            <div className="my-8 h-px w-32 bg-gold" />
-            <p className="max-w-xl text-lg text-pure/80">Monteur vidéo professionnel · Créateur de contenu · Coach Mindset & Leadership · Formateur</p>
-            <a href="#contact" className="mt-10 inline-block border border-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-ink">Collaborer</a>
+      <section id="top" className="relative flex items-center bg-ink">
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-6 px-6 pb-8 pt-24 md:grid-cols-2 md:gap-12 md:pb-16 md:pt-32">
+          <div className="min-w-0">
+            <h1 className="font-display text-3xl font-bold leading-tight text-pure md:text-5xl">Amadou Siddy Diallo</h1>
+            <div className="my-4 h-px w-24 bg-gold md:my-8 md:w-32" />
+            <p className="max-w-xl text-base leading-relaxed text-pure/80 md:text-lg">Monteur vidéo professionnel · Créateur de contenu · Coach Mindset & Leadership · Formateur</p>
+            <Button asChild variant="ghost" className="mt-5 h-auto min-h-12 rounded-none border border-gold px-8 py-3 text-sm font-semibold uppercase text-gold hover:bg-gold hover:text-ink md:mt-10"><a href="#contact">Collaborer</a></Button>
           </div>
-          <div className="border border-gold/30 p-2">
+          <div className="mx-auto w-full max-w-96 md:max-w-none">
             <img src={portrait.url} alt="Amadou Siddy Diallo — Siddy Mindset & Leadership" width={1254} height={1254} className="h-auto w-full" />
           </div>
         </div>
@@ -257,9 +270,9 @@ function Index() {
           </div>
           <div className="divide-y divide-gold/20">
             {contacts.map(([k, v, h]) => (
-              <a key={k} href={h} target="_blank" rel="noreferrer" className="flex items-center justify-between py-5 transition-colors hover:text-gold">
-                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">{k}</span>
-                <span className="text-pure/90">{v} →</span>
+              <a key={k} href={h} target="_blank" rel="noreferrer" className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-5 transition-colors hover:text-gold sm:flex sm:justify-between">
+                <span className="min-w-0 text-sm font-semibold uppercase text-gold">{k}</span>
+                <span className="min-w-0 text-right text-sm text-pure/90 sm:text-base">{v} →</span>
               </a>
             ))}
           </div>
