@@ -73,7 +73,7 @@ function List({ items }: { items: string[] }) {
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const links = [["#apropos", "À propos"], ["#services", "Services"], ["#createur360", "Créateur 360"], ["#realisations", "Montages"], ["#temoignages", "Avis"], ["#vision", "Vision"], ["#contact", "Contact"]];
+  const links = [["#apropos", "À propos"], ["#services", "Services"], ["#createur360", "Créateur 360"], ["#temoignages", "Avis"], ["#vision", "Vision"], ["#contact", "Contact"]];
   return (
     <main className="portfolio font-sans">
       <nav className="fixed inset-x-0 top-0 z-20 border-b border-gold/20 bg-ink/85 backdrop-blur">
@@ -200,28 +200,6 @@ function Index() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Preuves de montage */}
-      <section id="realisations" className="bg-cream py-28 text-ink">
-        <div className="mx-auto max-w-6xl px-6">
-          <Label n="07" t="Preuves de montage" />
-          <h2 className="font-display text-4xl font-semibold tracking-tight">Mes montages en images.</h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {["Spot publicitaire", "Interview / prise de parole", "Contenu TikTok / Reels", "Vidéo YouTube", "Avant / après montage", "Projet client"].map((t, i) => (
-              <div key={t} className="group">
-                <div className="flex aspect-[9/12] items-center justify-center border border-dashed border-ink/25 bg-pure">
-                  <div className="text-center">
-                    <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-gold text-gold">▶</span>
-                    <p className="mt-4 text-sm text-ink/50">Vidéo à ajouter</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-sm font-semibold"><span className="text-gold">0{i + 1}</span> · {t}</p>
-              </div>
-            ))}
-          </div>
-          <a href="https://www.tiktok.com/@siddy.mindset" target="_blank" rel="noreferrer" className="mt-10 inline-block border-b border-gold pb-1 text-sm font-semibold uppercase tracking-widest">Voir plus sur TikTok →</a>
         </div>
       </section>
 
