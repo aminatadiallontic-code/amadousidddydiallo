@@ -14,8 +14,6 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Siddy | Mindset & Leadership" },
       { property: "og:description", content: "Du potentiel à l’impact. Montage vidéo, Créateur 360 et coaching à Conakry." },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: portrait.url },
-      { name: "twitter:image", content: portrait.url },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
