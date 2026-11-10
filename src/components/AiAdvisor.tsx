@@ -4,9 +4,9 @@ import { generateAiReply } from "@/lib/ai-reply.functions";
 import { Button } from "@/components/ui/button";
 
 const types = [
-  ["prestation", "Prestation"],
-  ["accompagnement", "Accompagnement"],
-  ["formation", "Formation"],
+  ["prestation", "Prestations montage vidéo"],
+  ["accompagnement", "Accompagnement montage vidéo"],
+  ["formation", "Formation montage vidéo"],
 ] as const;
 
 export function AiAdvisor() {
@@ -42,7 +42,7 @@ export function AiAdvisor() {
         <div className="flex flex-wrap gap-2">
           {types.map(([v, l]) => (
             <Button variant="ghost" aria-pressed={type === v} key={v} type="button" onClick={() => setType(v)}
-              className={`h-auto min-h-11 max-w-full rounded-none border px-4 py-2 text-base hover:bg-pure/5 hover:text-gold ${type === v ? "border-gold text-gold" : "border-pure/20 text-pure/70 hover:border-pure/50"}`}>
+              className={`h-auto min-h-11 max-w-full whitespace-normal rounded-none border px-4 py-2 text-base hover:bg-pure/5 hover:text-gold ${type === v ? "border-gold text-gold" : "border-pure/20 text-pure/70 hover:border-pure/50"}`}>
               {l}
             </Button>
           ))}
