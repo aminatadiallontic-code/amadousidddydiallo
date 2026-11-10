@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -21,8 +22,9 @@ const field =
   "w-full border-0 border-b border-pure/25 bg-transparent px-0 py-3 text-pure placeholder:text-pure/40 focus:border-gold focus:outline-none";
 
 export function ContactForm() {
+  const navigate = useNavigate();
   const [type, setType] = useState<(typeof types)[number][0]>("prestation");
-  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
   const [error, setError] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -47,16 +49,12 @@ export function ContactForm() {
       setError("L’envoi a échoué. Réessayez ou écrivez sur WhatsApp.");
       return;
     }
-    setStatus("done");
-  }
-
-  if (status === "done") {
-    return (
-      <div className="border border-gold/40 p-10 text-center">
-        <p className="font-display text-2xl font-semibold text-gold">Merci !</p>
-        <p className="mt-3 text-pure/80">Votre demande a bien été envoyée. Siddy vous recontactera.</p>
-      </div>
-    );
+    try {
+      sessionStorage.setItem("contact-confirmation", JSON.stringify({ name: parsed.data.name, type: parsed.data.request_type }));
+    } catch {
+      // Navigation still works if browser storage is unavailable.
+    }
+    await navigate({ to: "/merci" });
   }
 
   return (
