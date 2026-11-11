@@ -18,8 +18,31 @@ const types = [
   ["formation", "Formation"],
 ] as const;
 
+// text-base (16px) keeps iOS from zooming the page when a field is focused.
 const field =
-  "w-full border-0 border-b border-pure/25 bg-transparent px-0 py-3 text-pure placeholder:text-pure/40 focus:border-gold focus:outline-none";
+  "w-full min-w-0 border-0 border-b border-pure/25 bg-transparent px-0 py-3 text-base text-pure placeholder:text-pure/40 focus:border-gold focus:outline-none";
+
+function Field({
+  id,
+  label,
+  children,
+}: {
+  id: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="min-w-0">
+      <label
+        htmlFor={id}
+        className="mb-1 block text-xs font-semibold uppercase tracking-[0.18em] text-pure/55"
+      >
+        {label}
+      </label>
+      {children}
+    </div>
+  );
+}
 
 export function ContactForm() {
   const navigate = useNavigate();
@@ -59,28 +82,93 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-6" noValidate>
-      <div className="flex flex-wrap gap-2">
+      <div role="group" aria-label="Type de demande" className="flex flex-wrap gap-2">
         {types.map(([v, l]) => (
-          <Button variant="ghost" aria-pressed={type === v}
+          <Button
+            variant="ghost"
+            aria-pressed={type === v}
             key={v}
             type="button"
             onClick={() => setType(v)}
-            className={`h-auto min-h-11 max-w-full rounded-none border px-4 py-2 text-base hover:bg-pure/5 hover:text-gold ${type === v ? "border-gold text-gold" : "border-pure/20 text-pure/70 hover:border-pure/50"}`}
+            className={`h-auto min-h-11 max-w-full whitespace-normal rounded-none border px-4 py-2 text-base hover:bg-pure/5 hover:text-gold ${type === v ? "border-gold text-gold" : "border-pure/20 text-pure/70 hover:border-pure/50"}`}
           >
             {l}
           </Button>
         ))}
       </div>
-      <div className="grid gap-6 sm:grid-cols-2">
-        <input name="name" placeholder="Nom complet" maxLength={100} className={field} />
-        <input name="email" type="email" placeholder="Email" maxLength={255} className={field} />
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <Field id="contact-name" label="Nom complet">
+          <input
+            id="contact-name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            autoCapitalize="words"
+            enterKeyHint="next"
+            placeholder="Votre nom"
+            maxLength={100}
+            className={field}
+          />
+        </Field>
+
+        <Field id="contact-email" label="Email">
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            inputMode="email"
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+            enterKeyHint="next"
+            placeholder="vous@exemple.com"
+            maxLength={255}
+            className={field}
+          />
+        </Field>
       </div>
-      <input name="phone" placeholder="Téléphone / WhatsApp (facultatif)" maxLength={30} className={field} />
-      <textarea name="message" rows={4} placeholder="Décrivez votre projet ou votre besoin" maxLength={2000} className={`${field} resize-none`} />
-      {error && <p className="text-sm text-destructive">{error}</p>}
-      <Button variant="ghost"
+
+      <Field id="contact-phone" label="Téléphone / WhatsApp (facultatif)">
+        <input
+          id="contact-phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          inputMode="tel"
+          autoCapitalize="off"
+          enterKeyHint="next"
+          placeholder="+224 …"
+          maxLength={30}
+          className={field}
+        />
+      </Field>
+
+      <Field id="contact-message" label="Votre besoin">
+        <textarea
+          id="contact-message"
+          name="message"
+          rows={4}
+          enterKeyHint="send"
+          autoCapitalize="sentences"
+          placeholder="Décrivez votre projet ou votre besoin"
+          maxLength={2000}
+          className={`${field} min-h-28 resize-none`}
+        />
+      </Field>
+
+      {error && (
+        <p id="contact-error" role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
+
+      <Button
+        variant="ghost"
         type="submit"
         disabled={status === "sending"}
+        aria-busy={status === "sending"}
         className="h-auto min-h-12 w-full whitespace-normal rounded-none border border-gold px-6 py-4 text-sm font-semibold uppercase text-gold hover:bg-gold hover:text-ink disabled:opacity-50 sm:w-auto"
       >
         {status === "sending" ? "Envoi…" : "Envoyer la demande"}
