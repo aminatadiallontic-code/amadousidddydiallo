@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { notifyContactOwner } from "@/lib/contact-email.functions";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Indiquez votre nom").max(100),
@@ -46,6 +48,7 @@ function Field({
 
 export function ContactForm() {
   const navigate = useNavigate();
+  const notifyOwner = useServerFn(notifyContactOwner);
   const [type, setType] = useState<(typeof types)[number][0]>("prestation");
   const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
   const [error, setError] = useState("");
@@ -71,6 +74,11 @@ export function ContactForm() {
       setStatus("error");
       setError("L’envoi a échoué. Réessayez ou écrivez sur WhatsApp.");
       return;
+    }
+    try {
+      await notifyOwner({ data: parsed.data });
+    } catch {
+      // A relay failure must not lose the saved request or invite a duplicate submission.
     }
     try {
       sessionStorage.setItem("contact-confirmation", JSON.stringify({ name: parsed.data.name, type: parsed.data.request_type }));
