@@ -31,3 +31,4 @@ use the editor.
 
 - Keep portfolio mobile layout scoped under `.portfolio`, with a collapsible header menu below the desktop breakpoint, so small-screen adjustments do not affect other app views.
 - Contact submission success navigates to `/merci`; keep personalization in tab-scoped session storage rather than URLs to avoid exposing client details in links.
+- Contact email notifications use a validated server function with a fixed FormSubmit recipient after the existing insert; relay failures must not discard stored requests or block the thank-you page.
