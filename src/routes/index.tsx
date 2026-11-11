@@ -248,8 +248,8 @@ function Index() {
           </div>
           <div className="divide-y divide-gold/20">
             {contacts.map(([k, v, h]) => (
-              <a key={k} href={h} target="_blank" rel="noreferrer" className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-5 transition-colors hover:text-gold sm:flex sm:justify-between">
-                <span className="min-w-0 text-sm font-semibold uppercase text-gold">{k}</span>
+              <a key={k} href={h} target="_blank" rel="noreferrer" className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 py-5 transition-colors hover:text-gold sm:flex sm:justify-between">
+                <span className="shrink-0 whitespace-nowrap text-sm font-semibold uppercase text-gold">{k}</span>
                 <span className="min-w-0 text-right text-sm text-pure/90 sm:text-base">{v} →</span>
               </a>
             ))}
