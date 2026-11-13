@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { contactEmailSchema, forwardContactEmail } from "@/lib/formsubmit";
 
 export const notifyContactOwner = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => contactEmailSchema.parse(input))
+  .validator((input: unknown) => contactEmailSchema.parse(input))
   .handler(async ({ data }) => {
     try {
       return await forwardContactEmail(data);
